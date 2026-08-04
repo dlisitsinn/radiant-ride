@@ -42,8 +42,8 @@ ul{list-style:none}
 section{padding:96px 0}
 
 /* ---------- header ---------- */
-.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,11,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
-.header.scrolled{box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background-color .3s,border-color .3s,box-shadow .3s}
+.header.scrolled{background:rgba(11,11,13,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.45)}
 .header__in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
 .logo{display:flex;align-items:center;gap:11px;font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.06em}
 .logo svg{flex:none}
@@ -66,25 +66,24 @@ section{padding:96px 0}
 .mobmenu a:hover{color:var(--lime)}
 .mobmenu .btn{margin-top:26px;align-self:flex-start}
 
-/* ---------- hero (stil' glavmosdetailing) ---------- */
-.hero{position:relative;padding:132px 0 0;overflow:hidden;background:radial-gradient(1200px 500px at 50% -100px,rgba(37,63,246,.16),transparent 60%),var(--bg)}
-.hero__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;gap:16px;flex-wrap:wrap}
-.credit{font-size:13px;color:var(--muted);letter-spacing:.06em}
-.credit b{color:var(--ink)}
-.hero__est{font-size:13px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
-.hero h1{font-size:clamp(72px,13.5vw,196px);text-align:center;text-transform:uppercase;letter-spacing:.03em;line-height:.9}
-.hero h1 .lime{color:var(--lime)}
-.hero__tag{text-align:center;font-size:clamp(13px,1.7vw,19px);font-weight:800;letter-spacing:.42em;text-transform:uppercase;color:var(--muted);margin-top:20px}
+/* ---------- hero fullscreen (stil' glavmosdetailing) ---------- */
+.hero{position:relative;height:100vh;min-height:640px;padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+.hero__bg{position:absolute;inset:0;line-height:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.52) 0%,rgba(11,11,13,.30) 42%,rgba(11,11,13,.60) 100%);pointer-events:none}
+.credit{position:absolute;top:94px;left:26px;z-index:3;font-size:13px;color:#d7d7dc;letter-spacing:.06em;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.credit b{color:#fff}
+.hero__content{position:relative;z-index:2;text-align:center;padding:0 20px;margin-top:40px}
+.hero h1{font-size:clamp(64px,12.5vw,188px);text-transform:uppercase;letter-spacing:.03em;line-height:.9;color:#fff;text-shadow:0 6px 46px rgba(0,0,0,.45)}
+.hero h1 .lime{color:var(--lime);text-shadow:0 6px 46px rgba(0,0,0,.55)}
+.hero__tag{font-size:clamp(13px,1.7vw,19px);font-weight:800;letter-spacing:.42em;text-transform:uppercase;color:#ecece6;margin-top:20px;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .hero__tag i{font-style:normal;color:var(--lime);padding:0 6px}
-.hero__cta{display:flex;justify-content:center;gap:14px;margin:34px 0 46px;flex-wrap:wrap}
-.hero__media{position:relative;line-height:0}
-.hero__media img{width:100%;height:auto}
-.hero__media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.34) 0%,transparent 26%,transparent 68%,rgba(11,11,13,.55) 100%);pointer-events:none}
+.hero__cta{display:flex;justify-content:center;gap:14px;margin-top:38px;flex-wrap:wrap}
 .hero__badges{position:absolute;left:24px;bottom:22px;display:flex;gap:12px;z-index:2;flex-wrap:wrap}
-.badge{background:rgba(11,11,13,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:5px;padding:10px 16px;line-height:1.25}
+.badge{background:rgba(11,11,13,.66);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-radius:5px;padding:10px 16px;line-height:1.25}
 .badge b{display:block;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--lime);letter-spacing:.04em}
 .badge span{font-size:11.5px;color:#d7d7dc;font-weight:600;letter-spacing:.04em}
-.hero__scroll{position:absolute;right:28px;bottom:24px;z-index:2;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#d7d7dc;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
+.hero__scroll{position:absolute;right:28px;bottom:24px;z-index:2;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#e4e4de;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px;text-shadow:0 1px 10px rgba(0,0,0,.5)}
 .hero__scroll::after{content:'';width:1px;height:44px;background:var(--lime);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -173,11 +172,10 @@ section{padding:96px 0}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="container">
-    <div class="hero__top">
-      <span class="credit">сделано: <b>LStudio</b></span>
-      <span class="hero__est">детейлинг · автосервис · автомойка</span>
-    </div>
+  <div class="hero__bg"><img src="img/hero.jpg" alt="Автомобили в детейлинг-студии Radiant Ride" fetchpriority="high"></div>
+  <div class="hero__overlay"></div>
+  <span class="credit">сделано: <b>LStudio</b></span>
+  <div class="hero__content">
     <h1 class="display">Radiant <span class="lime">Ride</span></h1>
     <p class="hero__tag">Уход за автомобилем <i>·</i> высшего качества</p>
     <div class="hero__cta">
@@ -185,15 +183,12 @@ section{padding:96px 0}
       <a class="btn btn--ghost" href="#works">Смотреть работы</a>
     </div>
   </div>
-  <div class="hero__media">
-    <img src="img/hero.jpg" alt="Автомобили в детейлинг-студии Radiant Ride" fetchpriority="high">
-    <div class="hero__badges">
-      <div class="badge"><b>12 лет</b><span>заботимся об авто</span></div>
-      <div class="badge"><b>4.9 из 5</b><span>рейтинг клиентов</span></div>
-      <div class="badge"><b>4 800+</b><span>автомобилей обслужено</span></div>
-    </div>
-    <span class="hero__scroll">листайте вниз</span>
+  <div class="hero__badges">
+    <div class="badge"><b>12 лет</b><span>заботимся об авто</span></div>
+    <div class="badge"><b>4.9 из 5</b><span>рейтинг клиентов</span></div>
+    <div class="badge"><b>4 800+</b><span>автомобилей обслужено</span></div>
   </div>
+  <span class="hero__scroll">листайте вниз</span>
 </section>
 
 <style>
@@ -296,7 +291,8 @@ section{padding:96px 0}
   section{padding:66px 0}
   .header__phone{display:none}
   .header .btn{display:none}
-  .hero{padding-top:104px}
+  .hero{min-height:560px}
+  .credit{top:86px;left:16px;font-size:12px}
   .hero__tag{letter-spacing:.26em}
   .hero__badges{left:14px;bottom:14px;gap:8px}
   .hero__badges .badge:nth-child(3){display:none}
@@ -497,17 +493,17 @@ section{padding:96px 0}
       </article>
       <article class="work">
         <span class="work__tag">Оклейка полиуретаном</span>
-        <img src="img/work-2.jpg" alt="Porsche Cayenne в процессе оклейки плёнкой" loading="lazy">
+        <img src="img/work-2.jpg" alt="Mercedes-AMG GT в процессе оклейки матовым полиуретаном" loading="lazy">
         <div class="work__body">
-          <h3 class="work__model">Porsche <i>Cayenne</i></h3>
-          <p class="work__list">Полная оклейка кузова полиуретановой плёнкой. Предварительная полировка, керамика поверх плёнки.</p>
+          <h3 class="work__model">Mercedes-<i>AMG GT</i></h3>
+          <p class="work__list">Полная оклейка кузова матовым полиуретаном. Полировка перед оклейкой, керамика поверх плёнки.</p>
         </div>
       </article>
       <article class="work">
         <span class="work__tag">Детейлинг-мойка</span>
-        <img src="img/work-3.jpg" alt="Mercedes-AMG в активной пене" loading="lazy">
+        <img src="img/work-3.jpg" alt="Porsche Macan — ручная мойка дисков" loading="lazy">
         <div class="work__body">
-          <h3 class="work__model">Mercedes-<i>AMG</i></h3>
+          <h3 class="work__model">Porsche <i>Macan</i></h3>
           <p class="work__list">Детейлинг-мойка в три фазы, глубокая чистка дисков, консервация кузова воском.</p>
         </div>
       </article>
